@@ -26,10 +26,25 @@ body {
 .tr-game:nth-child(4) .td-game:nth-child(4) {
 	border-bottom-right-radius: 18px;
 }
+#left-top-div {
+	border-top-left-radius: 18px;
+}
+#right-top-div {
+	border-top-right-radius: 18px;
+}
+#left-bottom-div {
+	border-bottom-left-radius: 18px;
+}
+#right-bottom-div {
+	border-bottom-right-radius: 18px;
+}
 .td-game {
 	background-color: red;
 }
-@media screen and (min-width: 640px) and (max-width: 768px){
+#timer:hover {
+	background-color: yellow;
+}
+@media screen and (max-width: 768px){
 	#main-game {
 		width: 425px;
 		height: 425px;
@@ -41,11 +56,10 @@ body {
 	.td-game {
 		border: 3px solid transparent;
 		margin: 10px;
+
 	}
 	#timer {
-		margin-top: -45px;
-		margin-left: auto;
-		margin-right: auto;
+		margin-top: 20px;
 		background-color: #DF2080;
 		width: 200px;
 		height: 50px;
@@ -54,20 +68,21 @@ body {
 		line-height: 44px;
 		font-size: 32px;
 		font-weight: bold;
+		cursor: pointer;
 	}
-	#start-game {
-		width: 75px;
-		height: 35px;
-		position: static;
-		margin-left: 20%;
-		margin-top: 30px;
+	#center-div {
+		text-align: center;
 	}
-	#reset-game {
-		width: 75px;
-		height: 35px;
-		float: right;
-		margin-right: 20%;
-		margin-top: 30px;
+	.image-pool {
+		background: green;
+		width: 95px;
+		height: 95px;
+		margin: 0 auto;
+	}
+	.images {
+		width: 50px;
+		height: 50px;
+		margin: 20px 0 0 20px;
 	}
 }
 @media screen and (min-width: 768px) and (max-width: 992px) {
