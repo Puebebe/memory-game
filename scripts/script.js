@@ -10,7 +10,7 @@ function startGame() {
 			images_sources[i].style.visibility = "hidden";
 			array_picker = Math.floor(Math.random()*16);
 			array_index = array_png[array_picker];
-			if (array_index!="none") {
+			if (array_index!=="none") {
 				array_holder[i] = "images/"+array_index+".png";
 				array_png[array_picker] = "none";
 				array_index = "none";
@@ -29,5 +29,26 @@ function comparizer(n) {
 	var images_sources = document.getElementsByClassName("images");
 	images_sources[n].src = array_holder[n];
 	images_sources[n].style.visibility = "visible";
-	
+	var clicked = images_sources[n].classList.add("clicked");
+	var visible_image = images_sources[n].style.visibility;
+	var source_image = images_sources.src;
+	var contains = images_sources[n].classList;
+	var classer = document.getElementsByClassName("clicked");
+	if(contains.contains("clicked") === true) {
+		document.getElementById("image-pool")[n].disabled = true;
+	}
+	if ( contains.contains("clicked") === true && contains.contains("matched") === false &&  classer[0].src===images_sources[n].src) {
+		classer[0].classList.add("matched");
+		classer[1].classList.add("matched");
+	}
+	else {
+		
+		classer[0].style.visibility = "hidden";
+		if(typeof classer[1] !== "undefined") {
+			classer[1].style.visibility = "hidden";
+		}
+		classer[0].classList.remove("clicked");
+		
+
+	}
 }
