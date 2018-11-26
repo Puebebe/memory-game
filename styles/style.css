@@ -86,6 +86,11 @@ body {
 		height: 50px;
 		border: 20px solid transparent;
 	}
+	#score {
+		text-align: center;
+		font-weight: bold;
+		font-size: 30px;
+	}
 }
 @media screen and (min-width: 768px) and (max-width: 992px) {
 	#main-game {
