@@ -7,7 +7,8 @@ function startGame() {
 	var array_index;
 	for(var i=0;i<16;i++) {
 		do {
-			images_sources[i].style.visibility = "hidden";
+			
+			images_sources[i].src = "images/puzzle.png"
 			array_picker = Math.floor(Math.random()*16);
 			array_index = array_png[array_picker];
 			if (array_index!=="none") {
@@ -19,36 +20,83 @@ function startGame() {
 				array_index = "";
 				array_picker = -1;
 			}
+			continue;
 		}
 		while(array_index != "none");
 		var array_index;
 		pools[i].style.visibility = "visible";
 	}
+
 }
+var x=0,z=0,a=0,c=0;
 function comparizer(n) {
 	var images_sources = document.getElementsByClassName("images");
-	images_sources[n].src = array_holder[n];
-	images_sources[n].style.visibility = "visible";
-	var clicked = images_sources[n].classList.add("clicked");
-	var visible_image = images_sources[n].style.visibility;
-	var source_image = images_sources.src;
-	var contains = images_sources[n].classList;
-	var classer = document.getElementsByClassName("clicked");
-	if(contains.contains("clicked") === true) {
-		document.getElementById("image-pool")[n].disabled = true;
-	}
-	if ( contains.contains("clicked") === true && contains.contains("matched") === false &&  classer[0].src===images_sources[n].src) {
-		classer[0].classList.add("matched");
-		classer[1].classList.add("matched");
-	}
-	else {
-		
-		classer[0].style.visibility = "hidden";
-		if(typeof classer[1] !== "undefined") {
-			classer[1].style.visibility = "hidden";
+	var i=0,y=0;
+	var length = array_holder.length;
+	for(i; i<length;i++) {
+		if(images_sources[i].classList.contains("clicked")) {
+			y+=1;
 		}
-		classer[0].classList.remove("clicked");
-		
+	}
+	if(y<2) {
+		for(i;i<length;i++) {
+			if (images_sources[i].classList.contains("clicked") === true) {
+				x+1;
+			}
+		}
+		if(x==0) {
+			images_sources[n].classList.add("clicked");
+			images_sources[n].classList.add("matched");
+			images_sources[n].style.visibility = "visible";
+			images_sources[n].src = array_holder[n];
+			x+=1;
+			images_sources[n].classList.add("first");
+			
+		}
+		else {
+			var first_image = document.getElementsByClassName("first");
+			images_sources[n].src = array_holder[n];
+			images_sources[n].style.visibility = "visible";
+			var clicked = images_sources[n].classList.add("clicked");
+			var container = images_sources[n].classList;
+			var classer = document.getElementsByClassName("clicked");
+			var score = document.getElementById("score");
+			setTimeout(function(){
+				if ( container.contains("clicked") === true && container.contains("matched") === false &&  images_sources[n].src===first_image[0].src) {
+					first_image[0].classList.remove("clicked");
+					images_sources[n].classList.remove("clicked");
+					images_sources[n].classList.add("matched");
+					first_image[0].classList.remove("images");
+					images_sources[n].classList.remove("images");
+					first_image[0].classList.remove("first");
+					var i_pool = document.getElementsByClassName("image-pool");
+					var table = [];
+					var d=0;
+					for(var i=0;i<16;i++) {
+						if(i_pool[i].childNodes[0].style.visibility === "visible") {
+							table[0] = i;
+							d++;
+						}
+					}
+					i_pool[table[0]].removeChild();
+					i_pool[table[1]].removeChild();
 
+					c+=1;
+					score.innerHTML = c;
+				}
+				else {
+					first_image[0].src = "images/puzzle.png";
+					first_image[0].classList.remove("clicked");
+					first_image[0].classList.remove("matched");
+					first_image[0].classList.remove("first");
+					images_sources[n].src = "images/puzzle.png";
+					images_sources[n].classList.remove("clicked");
+					c+=1;
+					score.innerHTML = c;
+				}
+			},500);
+			x-=1;
+			
+		}
 	}
 }
