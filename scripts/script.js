@@ -31,6 +31,7 @@ function startGame() {
 var x=0,z=0,a=0,c=0;
 function comparizer(n) {
 	var images_sources = document.getElementsByClassName("images");
+	var this_image_source = document.getElementsByClassName("images")[n].src;
 	var i=0,y=0;
 	var length = array_holder.length;
 	for(i; i<length;i++) {
@@ -38,65 +39,57 @@ function comparizer(n) {
 			y+=1;
 		}
 	}
-	if(y<2) {
-		for(i;i<length;i++) {
-			if (images_sources[i].classList.contains("clicked") === true) {
-				x+1;
+	var puzzle_src = document.getElementById("helper");
+	puzzle_src.src = "images/puzzle.png";
+	if(this_image_source === puzzle_src.src) {
+			if(y<2) {
+			for(i;i<length;i++) {
+				if (images_sources[i].classList.contains("clicked") === true) {
+					x+1;
+				}
+			}
+			if(x==0) {
+				images_sources[n].classList.add("clicked");
+				images_sources[n].classList.add("matched");
+				images_sources[n].style.visibility = "visible";
+				images_sources[n].src = array_holder[n];
+				x+=1;
+				images_sources[n].classList.add("first");
+				
+			}
+			else {
+				var first_image = document.getElementsByClassName("first");
+				images_sources[n].src = array_holder[n];
+				images_sources[n].style.visibility = "visible";
+				var clicked = images_sources[n].classList.add("clicked");
+				var container = images_sources[n].classList;
+				var classer = document.getElementsByClassName("clicked");
+				var score = document.getElementById("score");
+				setTimeout(function(){
+					if (container.contains("clicked") === true && container.contains("matched") === false &&  images_sources[n].src===first_image[0].src) {
+						first_image[0].classList.remove("clicked");
+						images_sources[n].classList.remove("clicked");
+						images_sources[n].classList.add("matched");
+						first_image[0].classList.remove("first");
+
+						c+=1;
+						score.innerHTML = c;
+					}
+					else {
+						first_image[0].src = "images/puzzle.png";
+						first_image[0].classList.remove("clicked");
+						first_image[0].classList.remove("matched");
+						first_image[0].classList.remove("first");
+						images_sources[n].src = "images/puzzle.png";
+						images_sources[n].classList.remove("clicked");
+						c+=1;
+						score.innerHTML = c;
+					}
+				},500);
+				x-=1;
+				
 			}
 		}
-		if(x==0) {
-			images_sources[n].classList.add("clicked");
-			images_sources[n].classList.add("matched");
-			images_sources[n].style.visibility = "visible";
-			images_sources[n].src = array_holder[n];
-			x+=1;
-			images_sources[n].classList.add("first");
-			
-		}
-		else {
-			var first_image = document.getElementsByClassName("first");
-			images_sources[n].src = array_holder[n];
-			images_sources[n].style.visibility = "visible";
-			var clicked = images_sources[n].classList.add("clicked");
-			var container = images_sources[n].classList;
-			var classer = document.getElementsByClassName("clicked");
-			var score = document.getElementById("score");
-			setTimeout(function(){
-				if ( container.contains("clicked") === true && container.contains("matched") === false &&  images_sources[n].src===first_image[0].src) {
-					first_image[0].classList.remove("clicked");
-					images_sources[n].classList.remove("clicked");
-					images_sources[n].classList.add("matched");
-					first_image[0].classList.remove("images");
-					images_sources[n].classList.remove("images");
-					first_image[0].classList.remove("first");
-					var i_pool = document.getElementsByClassName("image-pool");
-					var table = [];
-					var d=0;
-					for(var i=0;i<16;i++) {
-						if(i_pool[i].childNodes[0].style.visibility === "visible") {
-							table[0] = i;
-							d++;
-						}
-					}
-					i_pool[table[0]].removeChild();
-					i_pool[table[1]].removeChild();
-
-					c+=1;
-					score.innerHTML = c;
-				}
-				else {
-					first_image[0].src = "images/puzzle.png";
-					first_image[0].classList.remove("clicked");
-					first_image[0].classList.remove("matched");
-					first_image[0].classList.remove("first");
-					images_sources[n].src = "images/puzzle.png";
-					images_sources[n].classList.remove("clicked");
-					c+=1;
-					score.innerHTML = c;
-				}
-			},500);
-			x-=1;
-			
-		}
 	}
+
 }
