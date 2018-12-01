@@ -1,103 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Memory Game made by Patrick Parafińczuk</title>
+	<title>Memory Game</title>
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<meta charset="utf-8">
 </head>
 <body>
-<h1 id="title">Memory Game</h1>
-	<table id="main-game">
-		<tr class="tr-game">
-			<td class="td-game">
-				<div class="image-pool" id="left-top-div" onclick="comparizer(0)">
-					<img class="images" src="images/6.png">
-				</div>
-			</td>
-			<td class="td-game">
-				<div class="image-pool" onclick="comparizer(1)">
-					<img class="images">
-				</div>
-			</td>
-			<td class="td-game">
-				<div class="image-pool" onclick="comparizer(2)">
-					<img class="images">
-				</div>
-			</td>
-			<td class="td-game">
-				<div class="image-pool" id="right-top-div" onclick="comparizer(3)">
-					<img class="images">
-				</div>
-			</td>
-		</tr>
-		<tr class="tr-game">
-			<td class="td-game">
-				<div class="image-pool" onclick="comparizer(4)">
-					<img class="images">
-				</div>
-			</td>
-			<td class="td-game">
-				<div class="image-pool" onclick="comparizer(5)">
-					<img class="images">
-				</div>
-			</td>
-			<td class="td-game">
-				<div class="image-pool" onclick="comparizer(6)">
-					<img class="images">
-				</div>
-			</td>
-			<td class="td-game">
-				<div class="image-pool" onclick="comparizer(7)">
-					<img class="images">
-				</div>
-			</td>
-		</tr>
-		<tr class="tr-game">
-			<td class="td-game">
-				<div class="image-pool" onclick="comparizer(8)">
-					<img class="images">
-				</div>
-			</td>
-			<td class="td-game">
-				<div class="image-pool" onclick="comparizer(9)">
-					<img class="images">
-				</div>
-			</td>
-			<td class="td-game">
-				<div class="image-pool" onclick="comparizer(10)">
-					<img class="images">
-				</div>
-			</td>
-			<td class="td-game">
-				<div class="image-pool" onclick="comparizer(11)">
-					<img class="images">
-				</div>
-			</td>
-		</tr>
-		<tr class="tr-game">
-			<td class="td-game">
-				<div class="image-pool" id="left-bottom-div" onclick="comparizer(12)">
-					<img class="images">
-				</div>
-			</td>
-			<td class="td-game">
-				<div class="image-pool" onclick="comparizer(13)">
-					<img class="images">
-				</div>
-			</td>
-			<td class="td-game">
-				<div class="image-pool" onclick="comparizer(14)">
-					<img class="images">
-				</div>
-			</td>
-			<td class="td-game">
-				<div class="image-pool" id="right-bottom-div" onclick="comparizer(15)">
-					<img class="images">
-				</div>
-			</td>
-		</tr>
-	</table>
+<h1 id="title">Memory <span id="game-text">Game</span></h1>
+<div class="center-div">
+	<button id="instruction-button">Show Instruction</button>	
+</div>
+<div id="instruction">	
+<h2>Welcome to memory game made by Patrick Parafińczuk.</h2>
+	<ul type="circle">
+		<li>This game uses mouse only</li>
+		<li>Use your left mouse button to click on elements</li>
+		<li>To start your game:</li>
+		<ol type="1">
+			<li>Click "Start Game" button</li>
+			<li>Click one of the puzzle images</li>
+			<li>Remember image that's appeared to you</li>
+			<li>Click next image</li>
+			<li>If they're the same, they will last appeared to you to the end of game</li>
+			<li>If they're different, both images will disapear and the puzzle image will show up on both places</li>
+			<li>Repeat steps 2-4 until game ends by matching all of images</li>
+		</ol>
+	</ul>
+</div>
+<table id="main-game">
+	<tr class="tr-game">
+		<td class="td-game">
+			<div class="image-pool" id="left-top-div" onclick="comparizer(0)">
+				<img class="images" src="images/6.png">
+			</div>
+		</td>
+		<td class="td-game">
+			<div class="image-pool" onclick="comparizer(1)">
+				<img class="images">
+			</div>
+		</td>
+		<td class="td-game">
+			<div class="image-pool" onclick="comparizer(2)">
+				<img class="images">
+			</div>
+		</td>
+		<td class="td-game">
+			<div class="image-pool" id="right-top-div" onclick="comparizer(3)">
+				<img class="images">
+			</div>
+		</td>
+	</tr>
+	<tr class="tr-game">
+		<td class="td-game">
+			<div class="image-pool" onclick="comparizer(4)">
+				<img class="images">
+			</div>
+		</td>
+		<td class="td-game">
+			<div class="image-pool" onclick="comparizer(5)">
+				<img class="images">
+			</div>
+		</td>
+		<td class="td-game">
+			<div class="image-pool" onclick="comparizer(6)">
+				<img class="images">
+			</div>
+		</td>
+		<td class="td-game">
+			<div class="image-pool" onclick="comparizer(7)">
+				<img class="images">
+			</div>
+		</td>
+	</tr>
+	<tr class="tr-game">
+		<td class="td-game">
+			<div class="image-pool" onclick="comparizer(8)">
+				<img class="images">
+			</div>
+		</td>
+		<td class="td-game">
+			<div class="image-pool" onclick="comparizer(9)">
+				<img class="images">
+			</div>
+		</td>
+		<td class="td-game">
+			<div class="image-pool" onclick="comparizer(10)">
+				<img class="images">
+			</div>
+		</td>
+		<td class="td-game">
+			<div class="image-pool" onclick="comparizer(11)">
+				<img class="images">
+			</div>
+		</td>
+	</tr>
+	<tr class="tr-game">
+		<td class="td-game">
+			<div class="image-pool" id="left-bottom-div" onclick="comparizer(12)">
+				<img class="images">
+			</div>
+		</td>
+		<td class="td-game">
+			<div class="image-pool" onclick="comparizer(13)">
+				<img class="images">
+			</div>
+		</td>
+		<td class="td-game">
+			<div class="image-pool" onclick="comparizer(14)">
+				<img class="images">
+			</div>
+		</td>
+		<td class="td-game">
+			<div class="image-pool" id="right-bottom-div" onclick="comparizer(15)">
+				<img class="images">
+			</div>
+		</td>
+	</tr>
+</table>
 <div id="score"></div>
-<div id="center-div">
+<div class="center-div">
 	<button type="button" id="timer" onclick="startGame();">Start Game</button>
 </div>
 <img src="#" id="helper">
