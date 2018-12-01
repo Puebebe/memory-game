@@ -28,32 +28,27 @@ function startGame() {
 	}
 
 }
-var x=0,z=0,a=0,c=0;
+var attempts=0,matched_images=0;
 function comparizer(n) {
 	var images_sources = document.getElementsByClassName("images");
 	var this_image_source = document.getElementsByClassName("images")[n].src;
-	var i=0,y=0;
+	var i=0,many_clicked=0;
 	var length = array_holder.length;
-	for(i; i<length;i++) {
+	for(i;i<length;i++) {
 		if(images_sources[i].classList.contains("clicked")) {
-			y+=1;
+			many_clicked+=1;
 		}
 	}
 	var puzzle_src = document.getElementById("helper");
 	puzzle_src.src = "images/puzzle.png";
 	if(this_image_source === puzzle_src.src) {
-			if(y<2) {
-			for(i;i<length;i++) {
-				if (images_sources[i].classList.contains("clicked") === true) {
-					x+1;
-				}
-			}
-			if(x==0) {
+			if(many_clicked<2) {
+			if(many_clicked==0) {
 				images_sources[n].classList.add("clicked");
 				images_sources[n].classList.add("matched");
 				images_sources[n].style.visibility = "visible";
 				images_sources[n].src = array_holder[n];
-				x+=1;
+				many_clicked+=1;
 				images_sources[n].classList.add("first");
 				
 			}
@@ -72,8 +67,14 @@ function comparizer(n) {
 						images_sources[n].classList.add("matched");
 						first_image[0].classList.remove("first");
 
-						c+=1;
-						score.innerHTML = c;
+						attempts+=1;
+						score.innerHTML = attempts;
+
+						matched_images+=1;
+
+						if (matched_images === 8) {
+							score.innerHTML += " you Won";
+						}
 					}
 					else {
 						first_image[0].src = "images/puzzle.png";
@@ -82,11 +83,11 @@ function comparizer(n) {
 						first_image[0].classList.remove("first");
 						images_sources[n].src = "images/puzzle.png";
 						images_sources[n].classList.remove("clicked");
-						c+=1;
-						score.innerHTML = c;
+						attempts+=1;
+						score.innerHTML = attempts;
 					}
 				},500);
-				x-=1;
+				many_clicked-=1;
 				
 			}
 		}
