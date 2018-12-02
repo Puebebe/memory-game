@@ -88,3 +88,16 @@ function comparizer(n) {
 		}
 	}
 }
+var instruction = document.getElementById("instruction");
+instruction.style.display = "none";
+function instruction_display() {
+	var button = document.getElementById("instruction-button");
+	if (instruction.style.display == "block") {
+		instruction.style.display = "none";
+		button.innerHTML = "Show Instruction";
+	}
+	else if(instruction.style.display == "none") {
+		instruction.style.display = "block";
+		button.innerHTML = "Hide Instruction";
+	}
+}
