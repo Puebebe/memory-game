@@ -5,15 +5,15 @@ body {
 	background-color: lightblue;
 	font-family: Arial, sans-seriff;
 }
-#title {
+#title { /* "Memory Game" Sign */
 	text-align: center;
 	font-size: 48px;
 	animation: pulse 2s infinite alternate;
 }
-#instruction-button {
+#instruction-button { /* Button which shows and hides instruction */
 	margin-top: 20px;
 }
-#instruction {
+#instruction { /* Instruction of memory game */
 	margin: 20px auto 0 auto;
 	background-color: yellow;
 	border: 5px solid black;
@@ -22,7 +22,7 @@ body {
 	width: 400px;
 	height: 350px;
 }
-#instruction > ul > li {
+#instruction > ul > li { 
 	text-transform: uppercase;
 }
 #instruction > p {
@@ -30,7 +30,7 @@ body {
 	font-weight: bold;
 	font-size: 24px;
 }
-@keyframes pulse {
+@keyframes pulse { /* Animation of "Memory Game" sign */
 	0% {
 		color: red;
 	}
@@ -38,10 +38,10 @@ body {
 		color: white;
 	}
 }
-#game-text {
+#game-text { /* "Game" word in "Memory Game" sign */
 	animation: reverse_pulse 2s infinite alternate;
 }
-@keyframes reverse_pulse {
+@keyframes reverse_pulse { /* Animation of "Game" word in "Memory Game" sign */
 	0% {
 		color: white;
 	}
@@ -49,7 +49,7 @@ body {
 		color: red;
 	}
 }
-#main-game {
+#main-game { /* Main game content */
 	border-radius: 25px;
 	background-color: blue;
 }
@@ -83,15 +83,15 @@ body {
 #timer:hover {
 	background-color: yellow;
 }
-#footer {
+#footer { /* Footer of document */
 	text-align: center;
 	font-style: italic;
 	font-size: 14px;
 	padding: 0;
 	margin: 0;
 }
-@media screen and (max-width: 1024px){
-	#main-game {
+@media screen and (max-width: 1024px) { /* Styles for document with max width of 1024px */
+	#main-game { /* Main game content */
 		width: 425px;
 		height: 425px;
 		border: 5px solid white;
@@ -99,12 +99,12 @@ body {
 		margin-right: auto;
 		margin-top: 50px;
 	}
-	.td-game {
+	.td-game { /* Cell of Main game content */
 		border: 3px solid transparent;
 		margin: 10px;
 
 	}
-	#timer {
+	#starter { /* Start game button */
 		margin-top: 20px;
 		background-color: #DF2080;
 		width: 200px;
@@ -116,10 +116,10 @@ body {
 		font-weight: bold;
 		cursor: pointer;
 	}
-	.center-div {
+	.center-div { /* Helping div for centering element */
 		text-align: center;
 	}
-	.image-pool {
+	.image-pool { /* Div inside of cell of Main game content */
 		background: green;
 		width: 95px;
 		height: 95px;
@@ -127,17 +127,17 @@ body {
 		cursor: pointer;
 		visibility: hidden;
 	}
-	.images {
+	.images { /* Image inside of image-pool class */
 		width: 50px;
 		height: 50px;
 		border: 20px solid transparent;
 	}
-	#score {
+	#score { /* Div that shows counter of your attempts and eventually your win */
 		text-align: center;
 		font-weight: bold;
 		font-size: 30px;
 	}
-	#helper {
+	#helper { /* I had not idea to solve one problem so I've added this to store one url */
 		width: 0px;
 		height: 0px;
 		display: none;
@@ -157,7 +157,7 @@ body {
 		margin: 15px;
 
 	}
-	#timer {
+	#starter {
 		margin-top: 20px;
 		background-color: #DF2080;
 		width: 250px;
