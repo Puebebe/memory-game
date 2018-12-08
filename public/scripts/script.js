@@ -5,9 +5,15 @@ function startGame() { // Function that begins the game itself
 	var images_sources = document.getElementsByClassName("images"); // Images inside of image-pools
 	var array_picker; // Number randomized in interval from 0 to 15
 	var array_index; // It picks randomized number from array_png and stores it
+	attempts = 0;
+	matched_images = 0;
+	score.innerHTML = "";
 	var i=0; // ( ͡° ͜ʖ ͡°)
 	for(i;i<16;i++) {
 		do {
+			images_sources[i].classList.remove("clicked");
+			images_sources[i].classList.remove("matched");
+			images_sources[i].classList.remove("first");
 			images_sources[i].src = "../images/puzzle.png"; // It sets all images to puzzle.png
 			array_picker = Math.floor(Math.random()*16); // Randomizes number
 			array_index = array_png[array_picker]; // Picks number from array_png
