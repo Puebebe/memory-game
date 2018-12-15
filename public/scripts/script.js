@@ -1,5 +1,6 @@
 var array_holder = []; // It holds URLs of images
 function startGame() { // Function that begins the game itself
+	var score = document.getElementById("score"); // Our score div
 	var pools = document.getElementsByClassName("image-pool"); // There're divs inside of cells of Main game
 	var array_png = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8]; // Pairs of images from 1 to 8
 	var images_sources = document.getElementsByClassName("images"); // Images inside of image-pools
@@ -9,16 +10,18 @@ function startGame() { // Function that begins the game itself
 	matched_images = 0;
 	score.innerHTML = "";
 	var i=0; // ( ͡° ͜ʖ ͡°)
+	attempts = 0; // It resets attempts
+	score.innerHTML = ""; // Hide the score 
 	for(i;i<16;i++) {
 		do {
-			images_sources[i].classList.remove("clicked");
-			images_sources[i].classList.remove("matched");
-			images_sources[i].classList.remove("first");
-			images_sources[i].src = "../images/puzzle.png"; // It sets all images to puzzle.png
+			images_sources[i].classList.remove("clicked"); // Removes lasting class from previous game
+			images_sources[i].classList.remove("matched"); // Removes lasting class from previous game
+			images_sources[i].classList.remove("first"); // Removes lasting class from previous game
+			images_sources[i].src = "images/puzzle.png"; // It sets all images to puzzle.png
 			array_picker = Math.floor(Math.random()*16); // Randomizes number
 			array_index = array_png[array_picker]; // Picks number from array_png
 			if (array_index!=="none") {
-				array_holder[i] = "../images/"+array_index+".png"; // Saves URL of image to array cell
+				array_holder[i] = "images/"+array_index+".png"; // Saves URL of image to array cell
 				array_png[array_picker] = "none"; // Sets array_png to none to prevent future complications
 				array_index = "none"; // Same here as in array_png uppon it
 			}
@@ -46,7 +49,7 @@ function comparizer(n) { // Function that comparizes images
 		}
 	}
 	var puzzle_src = document.getElementById("helper"); // Variable that possesses helper that I've described before
-	puzzle_src.src = "../images/puzzle.png"; // Source of helper that stores the puzzle URL
+	puzzle_src.src = "images/puzzle.png"; // Source of helper that stores the puzzle URL
 	if(this_image_source === puzzle_src.src) { // This statement checks if image source that were chosen by user is equal by a type too with puzzle source
 		if(many_clicked<2) { // If they weren't clicked more than 2 images it will pass the function
 			if(many_clicked==0) { // If they're not clicked images yet it will make a first image additions
@@ -79,11 +82,11 @@ function comparizer(n) { // Function that comparizes images
 						}
 					}
 					else { // If one of the statements are not fulfilling the condition, it does
-						first_image[0].src = "../images/puzzle.png"; // We change the source URL of first image to puzzle.png
+						first_image[0].src = "images/puzzle.png"; // We change the source URL of first image to puzzle.png
 						first_image[0].classList.remove("clicked"); // It removes clicked class from first image, because it couldn't be more than 2 clicked images at the same time
 						first_image[0].classList.remove("matched"); // We removes this class, because it didn't match with clicked image
 						first_image[0].classList.remove("first"); // And it stops being the first image
-						images_sources[n].src = "../images/puzzle.png"; // Same here we change source to puzzle.png
+						images_sources[n].src = "images/puzzle.png"; // Same here we change source to puzzle.png
 						images_sources[n].classList.remove("clicked"); // And remove class clicked, because now there're not any clicked images
 						attempts+=1; // It adds one attempt made by user
 						score.innerHTML = attempts; // And we describe it on the screen
